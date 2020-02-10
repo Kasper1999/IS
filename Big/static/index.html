@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Google Phone Gallery</title>
+    <!-- <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" /> -->
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="angular-material.min.css" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/X.Y.Z/angular-animate.js"></script> -->
+    
+    <script src="lib/angular/angular.js"></script>
+
+    <script src="modul.js"></script>
+    <script src="angular-animate.min.js"></script> 
+    <script src="angular-aria.min.js"></script> 
+    <script src="angular-messages.min.js"></script> 
+    <script src="angular-material.min.js"></script> 
+    
+    <script src="yzModal.module.js"></script> 
+    <script src="yzModal.component.js"></script> 
+    
+    <script src="app.js"></script>
+    <!-- <script src="\node_modules\modal-angularjs-experiment\index.js"></script> -->
+
+    <script src="vs-module.js"></script>
+    <script src="vs.js"></script>
+
+    <script src="communication.js"></script>
+
+    <script src="myFilter-module.js"></script>
+
+    <script src="bootstrap-tab.js"></script>
+    <script src="mytab.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.1/ui-bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.1/ui-bootstrap-tpls.js"></script>
+
+    <!-- Подкл скрипты -->
+  </head>
+  <body>
+    <main>
+    <div ng-app="phonecatApp" > 
+<!-- Just Tab -->
+        <!-- <h1>Tabs Demo Angular.1.4</h1>
+        <hr>
+        
+      <mytabset>
+        <mytab title="First Tab">
+          <div>This is the content of the first tab.</div>
+        </mytab>
+        <mytab title="Second Tab">
+          <div>This is the content of the second tab.</div>
+        </mytab>
+      </mytabset> -->
+<!-- TabBootstrap -->
+<div class="tab" ng-controller="TabsDemoCtrl">
+<p>Select a tab by setting active binding to true:</p>
+<p>
+    <button class="btn btn-default btn-sm" ng-click="tabs[0].active = true">Select second tab</button>
+    <button class="btn btn-default btn-sm" ng-click="tabs[1].active = true">Select third tab</button>
+</p>
+<p>
+    <button class="btn btn-default btn-sm" ng-click="tabs[1].disabled = ! tabs[1].disabled">Enable / Disable third tab</button>
+</p>
+<hr />
+<tabset>
+    <tab heading="Static title">Static content </tab>
+    <tab heading="Static title 2" sepecial-tab="">Static content2 {{hello}}</tab>
+    <tab heading="Static title 3" select="thirdTabCallback()">Static content3 {{test}}
+        <button ng-click="clickme()">click me</button>
+    </tab>
+    <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">{{tab.content}}</tab>
+    <tab select="alertMe()">
+        <tab-heading> <i class="glyphicon glyphicon-bell"></i> Alert!</tab-heading>I've got an HTML heading, and a select callback. Pretty cool!</tab>
+</tabset>
+</div>
+<!--  -->
+<!-- Filter -->
+        <div class="model-block" ng-init="friends = [{name:'John', phone:'555-1276'},
+        {name:'Mary', phone:'800-BIG-MARY'},
+        {name:'Mike', phone:'555-4321'},
+        {name:'Adam', phone:'555-5678'},
+        {name:'Julie', phone:'555-8765'},
+        {name:'Juliette', phone:'555-5678'}]">
+
+        Search: <input ng-model="searchText">
+        <table id="searchTextResults">
+          <tr><th>Name</th><th>Phone</th></tr>
+          <tr ng-repeat="friend in friends | filter:searchText">
+            <td>{{friend.name}}</td>
+            <td>{{friend.phone}}</td>
+          </tr>
+        </table>
+        <hr>
+        <span class="filter_tittle">Статично</span> 
+        <div ng-repeat="item in {name: 'as', type: 'ff'}">{{item | checkFilter}}</div>
+        <div ng-repeat="item in [2,6,8,9]">{{$index + 1}}) {{item | newFilter}}</div>
+      </div>
+<!--  -->
+
+<!-- Модалка с внешней кнопкай -->
+      <div class="try" ng-controller="myModal">
+          <button class="button_out" ng-click="status = true; call('Open')" >Я все открою</button>
+          {{status | checkFilter}} 
+          <new-modal dis="status" close="call('Close')" on-open="many(val.name)">
+            <input ng-model="val.name " type="text">
+            {{val.name | checkFilter}}
+              <div>I am modal</div>
+              <p>asa</p>
+              <img width="240px" src="Animated_Mockup_3.gif" alt="no">
+          </new-modal>
+        </div>
+        <!--  -->
+        <script type="text/ng-template" id="newM.html">
+          <div class="new-modal" ng-show="Display">
+              {{messages}}
+            <div id="mod"  ng-transclude></div>
+            <button class="button_out" ng-click="Display = false; onClose()">Я закрою</button>
+            <button class="button_out" ng-click="onOpen()">СallBack</button>
+          </div>
+        </script>
+<!--  -->
+<!-- Общение компонентов -->
+<!-- Service -->
+<div class="communicat">  <!-- Open -->
+    <firct-component-service text="Вводим текст:"></firct-component-service>
+    <last-component-service></last-component-service>
+
+
+<script type="text/ng-template" id="firctComponent.html">
+  <div class="communicat-component" >
+      {{$ctrl.text}}
+    <input class="communicat-input" type="text" min="0" ng-model="name.first " required >
+    <input class="communicat-input" type="text" min="0" ng-model="name.last " required >
+    <br>
+    <button class="communicat-button" ng-click = "double()">+ copy</button>
+    <button class="communicat-button" ng-click = "back()">back</button>
+  </div>
+</script>
+
+<script type="text/ng-template" id="lastComponent.html">
+  <div class="communicat-component" >
+      <p>{{name.first}} {{name.last}}</p>
+      <p>{{name.fullName}}</p>
+  </div>
+</script>
+
+<!-- Event -->
+
+  <firct-component-event text="Клац клац плодит людей "></firct-component-event>
+  <last-component-event></last-component-event>
+</div> <!-- Close -->
+
+<script type="text/ng-template" id="firctComponentClick.html">
+  <div class="communicat-component" >
+    <button class="communicat-button" ng-click="plus()">{{$ctrl.text}}</button>
+  </div>
+</script>
+
+<script type="text/ng-template" id="lastComponentClick.html">
+  <div class="communicat-component" >
+      <p>{{human}}</p>
+  </div>
+</script>
+
+
+<!-- <div ng-controller="ParentCtrl as parent" class="ng-scope">
+  // ParentCtrl
+  <div ng-controller="SiblingOneCtrl as sib1" class="ng-scope">
+    // SiblingOneCtrl
+  </div>
+  <div ng-controller="SiblingTwoCtrl as sib2" class="ng-scope">
+    // SiblingTwoCtrl
+    <div ng-controller="ChildCtrl as child" class="ng-scope">
+      // ChildCtrl
+    </div>
+  </div>
+</div> -->
+
+
+<!-- <div class="communicat">
+    <firct-component-click text="Вводим текст:"></firct-component-click>
+    <last-component-click></last-component-click>
+</div> -->
+
+<!--  -->
+<!-- Сравнение ванилы и Ang -->
+      <div ng-controller="vsController">
+        <vs-modul just="justClick.s" ang="angClick">
+          <div>{{a}}</div>
+          <button onclick = "myFunction()"> onclick1 </button>
+          <button ng-click = "checkFunction(justClick.s); justClick.s=justClick.s+1;"> onclick2 (ng-click)</button>
+          {{justClick.s}}
+        </vs-modul>
+      </div>
+
+        <script type="text/ng-template" id="vs.html">
+          <div class="model-block" >
+            <div ng-transclude></div>
+            <button ng-click = "vsAustClick=vsAustClick+1"> ng-click</button>
+            <div>
+              <p>vsJustClick {{vsJustClick}}</p>
+              <p>vsAustClick {{vsAustClick}}</p>
+            </div>
+          </div>
+        </script>
+      <!-- http -->
+      <div class="data-block" ng-controller="QuestionController">
+        <div class="content">
+          <div class="quest">
+            <h3>{{question.text}}</h3>
+            <p>{{question.author}} </p> <p><i>{{question.date}}</i></p>
+          </div>
+          <h3>Ответы</h3>
+          <div class="answers">
+            <div ng-repeat="answer in question.answers | orderBy:sortparam" class="answer">
+              <div class="vote">
+                <a class="vote-down" ng-click="voteDown(answer)"><<<</a>
+                <span class="rate">{{answer.rate}}</span>
+                <a class="vote-up" ng-click="voteUp(answer)">>>></a>
+              </div>
+              <b>{{answer.text}}</b>
+              <p>{{answer.author}}</p>
+              <p><i>{{answer.date}}</i></p>
+            </div>
+          </div>
+        </div>
+        <button onclick = "UseXhr()"> UseXhr </button>
+      </div>
+<!--  -->
+<!-- watcher и его бесконечный цикл -->
+      <div class="try" ng-controller="meWatch">
+          <button class="button_out" ng-click = "aVal=aVal+1; applyFunction()"> meWatch</button>
+          <div class="circle">{{aVal}}</div>
+      </div>
+<!-- Tutorial -->
+    <div class="first-ang">
+        <yz-modal header="popup1" btn-text="open popup1">
+          <p>asfafasfasfasfasdf</p>
+          <div>I am modal</div>
+            <p>asa</p>
+            <img width="240px" src="Animated_Mockup_3.gif" alt="no">
+        </yz-modal>
+      <div class="phone" ng-controller="PhoneListController">
+        <ul>
+          <li ng-repeat="phone in phones">
+            <span>{{phone.name}}</span>
+            <p>{{phone.snippet}}</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="rer" ng-controller="mainController">
+        <div ng-controller="userController">
+          <div>
+            userController: <input type="text" min="0" ng-model="name.first " required >
+          </div>
+        <div>
+          <b>userController:</b>
+          <span>
+            {{name.first}}
+          </span><br>
+        </div>
+
+        <div ng-controller="nameController">
+          <div>
+            nameController: <input type="text" min="0" ng-model="name.first " required >
+          </div>
+          <div>
+            <b>nameController:</b>
+            <span>
+              {{name.first}}
+              <!-- <greet-user></greet-user> -->
+            </span><br>
+          </div>
+        </div>
+      </div>
+      <!-- <greet-user></greet-user> -->
+      <div ng-controller="hwController">
+        {{title}}
+        <my-model some-attr="hello">
+          new {{title}} 
+          <p>AAAAAAA</p>
+        </my-model>
+      </div>
+      <!-- <my-model></my-model> -->
+      //////////////////////////////////////////////////////////////////////
+      </div>
+    </div>
+<!--  -->
+<!-- Пробная модалка -->
+    <hw-model>
+      <div>I am modal</div>
+      <p>asa</p>
+      <img width="240px" src="Animated_Mockup_3.gif" alt="no">
+    </hw-model>
+
+    <script type="text/ng-template" id="ind.html">
+      <div class="model-block">
+          <!-- <button ng-click="showEvent()"> -->
+          <button ng-click="myVar='my-show'; myVAL='my-hidden'" ng-class="myVAL">
+              Вызов модалки
+          </button>
+      
+          <button class="my-hidden" ng-click="myVar='';  myVAL=''" ng-class="myVar">
+                  Скрытие модалки
+          </button>
+          <!-- <div id="mod" class="modarl" ng-transclude> -->
+          <div id="mod" class="modarl" ng-class="myVar" ng-transclude>
+          </div>
+      </div>
+    </script>
+<!--  -->
+  </div> 
+
+  <!-- <di ng-app="yzModal">
+    <yz-modal></yz-modal>
+  </div> -->
+  <!-- <modal-window></modal-window> -->
+  </main>
+  </body>
+</html>

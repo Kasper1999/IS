@@ -1,0 +1,75 @@
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+}
+
+.tab-section {
+    width: 75%;
+    margin: 5px auto;
+    padding: 18px;
+    border: 2px solid rgba(36, 131, 219, 0.473);
+    border-radius: 20px;
+    background-color: rgba(168, 196, 255, 0.123);
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+    display: inline;
+}
+
+.tab {
+    height: 40px;
+    width: 70px;
+    margin: 0;
+    border-radius: 10px 10px 0 0;
+    background-color: rgb(208, 223, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    color: inherit;
+    color: white;
+    position: relative;
+    z-index: 1;
+    margin-left: -10px;
+    outline: none;
+    border: 1px solid rgb(188, 208, 252);
+}
+
+.tab:hover, .tab:focus {
+    background-color: rgb(141, 176, 253);
+    border: none;
+}
+
+.ng-scope .active button {
+    background-color: rgb(6, 78, 233);
+    z-index: 10;
+    border: none;
+}
+
+.tab-content {
+    min-height: 180px;;
+    border-radius: 20px;
+    border: 2px solid rgba(6, 78, 233, 0.767);
+    padding: 20px;
+    margin: 0 10px 10px 10px;
+    background-color: white;
+}
+
+.tab-content .tab-pane{
+ display:none; 
+}
+
+.tab-content .tab-pane.active{
+ display:block; 
+}

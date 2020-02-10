@@ -1,0 +1,160 @@
+main {
+  width: 80%;
+  margin: auto;
+}
+
+div {
+  padding: 6px;
+}
+
+span {
+  color: red;
+}
+
+.tab {
+  width: 80%;
+  margin: 5px auto;
+  padding: 18px;
+  border: 2px solid rgb(36, 131, 219);
+  border-radius: 20px;
+}
+
+.model-block, .data-block {
+  min-height: 300px;
+  background-color: rgba(101, 163, 221, 0.322); 
+  padding: 20px;
+  position: relative;
+}
+
+.data-block {
+  background-color: rgba(204, 94, 86, 0.322); 
+}
+
+.try {
+  background-color: rgba(255, 255, 97, 0.507);
+}
+
+.circle {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 50%;
+  min-width: 34px;
+  text-align: center;
+}
+
+.first-ang {
+  background-color: rgba(66, 190, 55, 0.301);
+}
+
+.filter_tittle {
+  font-weight: 600;
+  font-size: 16PT;
+}
+
+.modarl, .new-modal{
+  width: 300px;
+  min-height: 20px;
+  padding: 20px;
+  color: rgb(223, 52, 0);
+  font-weight: 600;
+  background-color: rgb(197, 255, 170); 
+  border-radius: 20px;
+  position: absolute;
+  right: 40px;
+  top: 20px;
+  display: none;
+  z-index: 100;
+}
+
+.new-modal {
+  display: block;
+  position: fixed;
+}
+
+.my-hidden {
+  display: none;
+}
+
+.my-show {
+  display: block;
+}
+
+.button_out, .model-block button {
+  padding: 15px;
+  margin: 10px;
+  border: none;
+  font: inherit;
+  color: white;
+  border-radius: 20px;
+  background-color: rgb(16, 107, 4);
+}
+
+.button_out:hover {
+  border: 2px dashed rgb(214, 214, 1);
+  padding: 13px;
+}
+
+.model-block button {
+  background-color: #043A6B;
+  border: none;
+  margin: 2px;
+}
+
+.model-block button:hover {
+  background-color: rgb(4, 78, 107);
+}
+
+.phone {
+  border: 2px solid rgb(126, 2, 2);
+  width: 340px;
+  margin: 10px;
+}
+
+.communicat {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 900px;
+  margin: auto;
+}
+
+.communicat-component {
+  overflow: hidden;
+  width: 300px;
+  min-height: 50px;
+  padding: 20px;
+  margin: 10px;
+  color: rgb(223, 52, 0);
+  font-weight: 600;
+  background-color: rgb(197, 255, 170); 
+  border-radius: 20px;
+}
+
+.communicat-button {
+  padding: 15px;
+  margin: 5px;
+  font: inherit;
+  color: white;
+  border: 2px solid white;
+  border-radius: 20px;
+  background-color: rgb(33, 143, 18);
+}
+
+.communicat-button:hover {
+  color: rgb(26, 116, 15);
+  border: 2px solid rgb(26, 116, 15);
+  background-color: white;
+  outline: 0 !important;
+}
+
+/* .communicat-button:focus {
+  outline: 0 !important; 
+} */
+
+.communicat-input {
+  border: 2px solid rgb(33, 143, 18);
+  border-radius: 10px;
+  color: rgb(26, 116, 15);
+  padding: 5px;
+  margin: 5px 0;
+}

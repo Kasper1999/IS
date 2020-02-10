@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Google Phone Gallery</title>
+    <!-- <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" /> -->
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="angular-material.min.css" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/X.Y.Z/angular-animate.js"></script> -->
+    
+    <script src="lib/angular/angular.js"></script>
+
+    <script src="modul.js"></script>
+    <script src="angular-animate.min.js"></script> 
+    <script src="angular-aria.min.js"></script> 
+    <script src="angular-messages.min.js"></script> 
+    <script src="angular-material.min.js"></script> 
+    
+    <script src="yzModal.module.js"></script> 
+    <script src="yzModal.component.js"></script> 
+    
+    <script src="app.js"></script>
+    <!-- <script src="\node_modules\modal-angularjs-experiment\index.js"></script> -->
+
+    <script src="vs-module.js"></script>
+    <script src="vs.js"></script>
+
+    <script src="communication.js"></script>
+
+    <script src="myFilter-module.js"></script>
+
+    <script src="bootstrap-tab.js"></script>
+    <script src="mytab.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.1/ui-bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.1/ui-bootstrap-tpls.js"></script>
+
+    <!-- Подкл скрипты -->
+  </head>
+  <body>
+    <main>
+    <div ng-app="phonecatApp" > 
+<!-- Just Tab -->
+        <!-- <h1>Tabs Demo Angular.1.4</h1>
+        <hr>
+        
+      <tabset>
+        <tab title="First Tab">
+          <div>This is the content of the first tab.</div>
+        </tab>
+        <tab title="Second Tab">
+          <div>This is the content of the second tab.</div>
+        </tab>
+      </tabs> -->
+<!-- TabBootstrap -->
+<div class="tab" ng-controller="TabsDemoCtrl">
+<p>Select a tab by setting active binding to true:</p>
+<p>
+    <button class="btn btn-default btn-sm" ng-click="tabs[0].active = true">Select second tab</button>
+    <button class="btn btn-default btn-sm" ng-click="tabs[1].active = true">Select third tab</button>
+</p>
+<p>
+    <button class="btn btn-default btn-sm" ng-click="tabs[1].disabled = ! tabs[1].disabled">Enable / Disable third tab</button>
+</p>
+<hr />
+<tabset>
+    <tab heading="Static title">Static content </tab>
+    <tab heading="Static title 2" sepecial-tab="">Static content2 {{hello}}</tab>
+    <tab heading="Static title 3" select="thirdTabCallback()">Static content3 {{test}}
+        <button ng-click="clickme()">click me</button>
+    </tab>
+    <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">{{tab.content}}</tab>
+    <tab select="alertMe()">
+        <tab-heading> <i class="glyphicon glyphicon-bell"></i> Alert!</tab-heading>I've got an HTML heading, and a select callback. Pretty cool!</tab>
+</tabset>
+</div>
+<!--  -->
+
+  </div> 
+  </main>
+  </body>
+</html>
